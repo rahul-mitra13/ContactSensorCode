@@ -20,6 +20,7 @@ while (ctr != 400):
         wiringpi.pwmWrite(18, 150)  #write PWM pulses of 150 to pin 18, rotating end off of rod
     else: #bringDown
         wiringpi.pwmWrite(18, 175)  #write PWM pulses of 175 to pin 18, rotating end onto rod
+    # To prevent the servo to break the rod
     GPIO.output(17,GPIO.LOW)
     subprocess.run(["sudo","./adxl345spi","-t","1","-s",str(now)+"_"+str(flag)+"_"+"1.5_3200_1_b21.csv"])
     ctr = ctr + 1
